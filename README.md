@@ -1,4 +1,4 @@
-https://ai-businnessintelligencesalesforecast-9xqrgtxxbmfw5kjc9wszmf.streamlit.app/About
+https://ai-businnessintelligencesalesforecast-nuoy3nz5rvj2jmha9sqxue.streamlit.app/
 
 AI Business Intelligence & Sales Forecasting Platform
 
