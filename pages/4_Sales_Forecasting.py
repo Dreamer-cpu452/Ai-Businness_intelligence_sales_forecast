@@ -10,6 +10,13 @@ from utils.forecasting import (
 )
 from utils.visualization import forecast_chart
 from utils.inventory import inventory_recommendation
+from utils.forecasting import (
+    prepare_data,
+    train_model,
+    future_prediction,
+    evaluate_model,
+    predict_revenue_profit
+)
 
 st.title("🤖 Sales Forecasting")
 
@@ -24,6 +31,7 @@ mae, rmse = evaluate_model(
 future_df = future_prediction(model)
 
 df["Predicted_Sales"] = predictions
+predicted_revenue, predicted_profit = predict_revenue_profit(df)
 df["Inventory_Status"] = inventory_recommendation(df)
 
 st.success("Dataset Processed Successfully ✅")
@@ -108,3 +116,39 @@ with col2:
         "RMSE",
         round(rmse, 2)
     )
+
+st.markdown("---")
+
+if st.button("🚀 Predict Business Outcome"):
+
+    st.subheader("💰 Revenue & Profit Prediction")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.metric(
+            "Predicted Revenue",
+            f"₹{round(predicted_revenue,2)}"
+        )
+
+    with col2:
+
+        st.metric(
+            "Predicted Profit",
+            f"₹{round(predicted_profit,2)}"
+        )
+
+    st.markdown("---")
+
+    if predicted_profit > 0:
+
+        st.success(
+            "✅ PROFIT EXPECTED"
+        )
+
+    else:
+
+        st.error(
+            "❌ LOSS EXPECTED"
+        )

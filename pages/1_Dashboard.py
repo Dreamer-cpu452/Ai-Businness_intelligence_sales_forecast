@@ -2,6 +2,11 @@ import streamlit as st
 
 from utils.data_manager import get_data
 from utils.kpi_calculator import calculate_kpis
+from utils.visualization import (
+    sales_trend,
+    revenue_distribution,
+    top_products_chart
+)
 
 st.title("📊 Business Dashboard")
 
@@ -54,4 +59,36 @@ st.info(
 
 st.warning(
     "📦 Inventory Optimization Module Coming Soon"
+)
+st.markdown("---")
+
+st.subheader("📈 Revenue Trend")
+
+fig1 = sales_trend(df)
+
+st.plotly_chart(
+    fig1,
+    use_container_width=True
+)
+
+st.markdown("---")
+
+st.subheader("🛒 Revenue Distribution")
+
+fig2 = revenue_distribution(df)
+
+st.plotly_chart(
+    fig2,
+    use_container_width=True
+)
+
+st.markdown("---")
+
+st.subheader("🏆 Top Products")
+
+fig3 = top_products_chart(df)
+
+st.plotly_chart(
+    fig3,
+    use_container_width=True
 )

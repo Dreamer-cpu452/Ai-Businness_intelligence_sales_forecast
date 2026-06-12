@@ -85,3 +85,31 @@ def evaluate_model(df, predictions):
     ) ** 0.5
 
     return mae, rmse
+def predict_revenue_profit(df):
+
+    predicted_sales = df["Predicted_Sales"]
+
+    avg_price = (
+        df["Revenue"] /
+        df["Units_Sold"]
+    ).mean()
+
+    avg_cost = (
+        (df["Revenue"] - df["Profit"])
+        /
+        df["Units_Sold"]
+    ).mean()
+
+    predicted_revenue = (
+        predicted_sales * avg_price
+    )
+
+    predicted_profit = (
+        predicted_sales *
+        (avg_price - avg_cost)
+    )
+
+    return (
+        predicted_revenue.sum(),
+        predicted_profit.sum()
+    )

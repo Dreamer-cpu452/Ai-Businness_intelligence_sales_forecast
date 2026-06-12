@@ -10,6 +10,13 @@ from utils.inventory import (
     inventory_recommendation,
     stock_risk
 )
+from utils.visualization import (
+
+    inventory_status_chart,
+
+    risk_chart
+
+)
 from utils.ai_insights import generate_recommendation
 from utils.inventory import inventory_recommendation
 
@@ -26,6 +33,9 @@ df["Predicted_Sales"] = predictions
 df["Inventory_Status"] = inventory_recommendation(df)
 df["Risk_Level"] = stock_risk(df)
 df["AI_Recommendation"] = generate_recommendation(df)
+fig1 = inventory_status_chart(df)
+
+fig2 = risk_chart(df)
 
 st.success("Inventory Engine Loaded Successfully ✅")
 
@@ -91,6 +101,44 @@ st.dataframe(
     ]
 
 )
+st.markdown("---")
+
+st.subheader("🤖 AI Recommendations")
+
+st.dataframe(
+
+    df[
+        [
+            "Product",
+            "AI_Recommendation"
+        ]
+    ]
+
+)
+st.markdown("---")
+
+st.subheader("📦 Inventory Status")
+
+st.plotly_chart(
+
+    fig1,
+
+    use_container_width=True
+
+)
+
+st.markdown("---")
+
+st.subheader("⚠ Risk Analysis")
+
+st.plotly_chart(
+
+    fig2,
+
+    use_container_width=True
+
+)
+
 st.markdown("---")
 
 st.subheader("🤖 AI Recommendations")

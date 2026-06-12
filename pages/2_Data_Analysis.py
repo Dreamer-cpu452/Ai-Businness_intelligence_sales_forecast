@@ -1,88 +1,103 @@
 import streamlit as st
-from utils.data_manager import get_data
-from utils.business_engine import business_score
-from utils.business_engine import business_score
 
-st.title("📈 Data Analysis Center")
+from utils.data_manager import get_data
+
+from utils.visualization import (
+
+    sales_trend,
+
+    revenue_distribution,
+
+    profit_distribution
+
+)
+
+st.title("📊 Data Analysis")
 
 df = get_data()
 
-st.success("Dataset Loaded Successfully ✅")
+st.success("Dataset Loaded Successfully")
 
 st.markdown("---")
 
-# Basic Information
-
-st.subheader("📋 Dataset Information")
+# KPI
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("Rows", df.shape[0])
+
+    st.metric(
+
+        "Products",
+
+        len(df)
+
+    )
 
 with col2:
-    st.metric("Columns", df.shape[1])
+
+    st.metric(
+
+        "Total Revenue",
+
+        f"₹{df['Revenue'].sum():,.0f}"
+
+    )
 
 with col3:
-    st.metric("Missing Values", df.isnull().sum().sum())
+
+    st.metric(
+
+        "Total Profit",
+
+        f"₹{df['Profit'].sum():,.0f}"
+
+    )
 
 st.markdown("---")
 
-# Data Types
+st.subheader("📈 Sales Trend")
 
-st.subheader("🧩 Data Types")
+fig1 = sales_trend(df)
 
-st.dataframe(df.dtypes.astype(str))
+st.plotly_chart(
 
-st.markdown("---")
+    fig1,
 
-# Missing Values
+    use_container_width=True
 
-st.subheader("❓ Missing Values")
-
-missing = df.isnull().sum()
-
-st.dataframe(missing)
-
-st.markdown("---")
-
-# Duplicate Records
-
-duplicates = df.duplicated().sum()
-
-st.subheader("📑 Duplicate Records")
-
-st.write("Duplicate Rows :", duplicates)
-
-st.markdown("---")
-
-# Statistical Summary
-
-st.subheader("📊 Statistical Summary")
-
-st.dataframe(df.describe())
-
-st.markdown("---")
-
-# Data Preview
-
-st.subheader("👀 Dataset Preview")
-
-st.dataframe(df)
-st.markdown("---")
-
-st.subheader("🏆 Data Quality Score")
-
-score = business_score(df)
-
-st.metric(
-    "Business Score",
-    f"{score}/100"
 )
 
-if score > 90:
-    st.success("Excellent Dataset")
-elif score > 70:
-    st.warning("Good Dataset")
-else:
-    st.error("Poor Dataset")
+st.markdown("---")
+
+st.subheader("💰 Revenue Distribution")
+
+fig2 = revenue_distribution(df)
+
+st.plotly_chart(
+
+    fig2,
+
+    use_container_width=True
+
+)
+
+st.markdown("---")
+
+st.subheader("📊 Profit Distribution")
+
+fig3 = profit_distribution(df)
+
+st.plotly_chart(
+
+    fig3,
+
+    use_container_width=True
+
+)
+
+st.markdown("---")
+
+st.subheader("📋 Dataset Preview")
+
+st.dataframe(df)
