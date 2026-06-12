@@ -1,24 +1,22 @@
 https://ai-businnessintelligencesalesforecast-9xqrgtxxbmfw5kjc9wszmf.streamlit.app/About
 
-# AI Business Intelligence & Sales Forecasting Platform
+AI Business Intelligence & Sales Forecasting Platform
 
-A machine learning and business intelligence platform that predicts future sales, optimizes inventory, and provides actionable business insights.
+Features:
+• AI Sales Forecasting
+• Customer/Product Segmentation
+• Interactive Dashboards
+• CEO Executive Dashboard
+• Inventory Optimization
+• AI Insights
+• CSV Report Export
+• Streamlit UI
+• Machine Learning Predictions
 
-## Technologies
-
-- Python
-- Streamlit
-- Pandas
-- Plotly
-- Scikit-learn
-- XGBoost
-- Machine Learning
-- Business Intelligence
-
-## Features
-
-- Sales Forecasting
-- Inventory Optimization
-- AI Insights
-- CEO Dashboard
-- Smart Reports
+Tech Stack:
+Python
+Pandas
+Scikit-Learn
+Streamlit
+Plotly
+NumPy
