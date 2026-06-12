@@ -1,0 +1,6 @@
+Date,Product,Category,Units_Sold,Price,Revenue,Profit,Inventory
+2025-01-01,Laptop,Electronics,25,50000,1250000,250000,120
+2025-01-02,Mouse,Accessories,100,500,50000,15000,400
+2025-01-03,Keyboard,Accessories,75,1500,112500,25000,300
+2025-01-04,Monitor,Electronics,30,12000,360000,70000,80
+2025-01-05,Printer,Office,15,10000,150000,30000,50
