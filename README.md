@@ -1,3 +1,5 @@
+https://ai-businnessintelligencesalesforecast-9xqrgtxxbmfw5kjc9wszmf.streamlit.app/About
+
 # AI Business Intelligence & Sales Forecasting Platform
 
 A machine learning and business intelligence platform that predicts future sales, optimizes inventory, and provides actionable business insights.
